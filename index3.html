@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Pengajuan Lembur Pegawai</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+  <style>
+    /* Add your styles here */
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"], input[type="reset"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover, input[type="reset"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body class="hold-transition sidebar-mini">
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Simpeg NF</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Circle Website</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard Pegawai
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daftar Pegawai</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index2.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kelola Pegawai</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Form Pengajuan Lembur Pegawai</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index-4.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daftar Pengajuan Lembur Pegawai</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="login.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Logout
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>Form Pengajuan Lembur Pegawai</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="blank.html">Home</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+        <br>
+        <fieldset class="border p-2">
+            <legend class="w-auto">Form Lembur(Overtime)</legend>
+            <form action="proses-lembur.php" method="post">
+                <label for="nama-pegawai">Nama Pegawai:</label>
+                <input type="text" id="nama_pegawai" name="nama_pegawai" placeholder="Nama Pegawai">
+                <br>
+                <label for="tanggal">Tanggal:</label>
+                <input type="date" id="tanggal" name="tanggal">
+                <br>
+                <label for="jam_mulai_lembur">Jam Mulai Lembur:</label>
+                <input type="time" id="jam_mulai_lembur" name="jam_mulai_lembur" placeholder="Jam Mulai Lembur">
+                <label for="jam_akhir_lembur">Jam Akhir Lembur:</label>
+                <input type="time" id="jam_akhir_lembur" name="jam_akhir_lembur" placeholder="Jam Akhir Lembur">
+                <br>
+                <label for="deskripsi">Deskripsi:</label>
+                <textarea id="deskripsi_pekerjaan" name="deskripsi_pekerjaan" placeholder="Deskripsi Pekerjaan"></textarea>
+                <br>
+                <input type="submit" value="Simpan">
+                <input type="reset" value="Batal">
+            </form>
+        
+        </fieldset>
+
+
+       <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+</body>
+</html>

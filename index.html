@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Pengajuan Lembur Pegawai</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+   
+    .table-container {
+      width: 140%;
+      margin: auto;
+      overflow-x: auto;
+      padding: 40px;
+     
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-bottom: 1px solid black;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid black;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+    .border {
+     border: 2px solid #000;
+     padding: 10px; /* Tambahkan padding sesuai kebutuhan */
+   }
+
+    fieldset {
+  border: 2px solid #000; 
+}
+    
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Data contoh
+      const pegawaiData = [
+        { nama: 'Hilman', jabatan: 'Direktur', tmpLahir: 'NTB', tglLahir: '2006-01-15', aktif: true },
+        { nama: 'Muhamad Aldi Perdiyatna', jabatan: 'Manajer', tmpLahir: 'Jakarta', tglLahir: '2001-05-21', aktif: true },
+        { nama: 'Azzhar Nurul Fikri', jabatan: 'Staff', tmpLahir: 'Bogor', tglLahir: '2004-01-31', aktif: false },
+        { nama: 'Ainun Nisa', jabatan: 'Staff', tmpLahir: 'Medan', tglLahir: '2003-01-04', aktif: true },
+      ];
+
+      // Fungsi untuk membuat baris tabel
+      function generateTableRow(pegawai) {
+        const row = document.createElement('tr');
+
+        // Nama
+        const nama = document.createElement('td');
+        nama.textContent = pegawai.nama;
+        row.appendChild(nama);
+
+        // Jabatan
+        const jabatan = document.createElement('td');
+        jabatan.textContent = pegawai.jabatan;
+        row.appendChild(jabatan);
+
+        // Tempat Lahir
+        const tmpLahir = document.createElement('td');
+        tmpLahir.textContent = pegawai.tmpLahir;
+        row.appendChild(tmpLahir);
+
+        // Tanggal Lahir
+        const tglLahir = document.createElement('td');
+        tglLahir.textContent = pegawai.tglLahir;
+        row.appendChild(tglLahir);
+
+        // Aktif
+        const aktif = document.createElement('td');
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = pegawai.aktif;
+        checkbox.enable = true;
+        aktif.appendChild(checkbox);
+        row.appendChild(aktif);
+
+        // Action
+        const action = document.createElement('td');
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.addEventListener('click', function () {
+          editPegawai(pegawai);
+        });
+        action.appendChild(editButton);
+        row.appendChild(action);
+
+        return row;
+      }
+
+      // Fungsi untuk mengedit data pegawai
+      function editPegawai(pegawai) {
+        const newNama = prompt('Masukkan nama baru:', pegawai.nama);
+        const newJabatan = prompt('Masukkan jabatan baru:', pegawai.jabatan);
+        const newTmpLahir = prompt('Masukkan tempat lahir baru:', pegawai.tmpLahir);
+        const newTglLahir = prompt('Masukkan tanggal lahir baru:', pegawai.tglLahir);
+
+        // Memperbarui data
+        pegawai.nama = newNama;
+        pegawai.jabatan = newJabatan;
+        pegawai.tmpLahir = newTmpLahir;
+        pegawai.tglLahir = newTglLahir;
+
+        // Merender ulang tabel
+        renderPegawai();
+      }
+
+      // Fungsi untuk merender data pegawai dalam tabel
+      function renderPegawai() {
+        const pegawaiList = document.getElementById('pegawai-list');
+        pegawaiList.innerHTML = '';
+
+        pegawaiData.forEach((pegawai) => {
+          const row = generateTableRow(pegawai);
+          pegawaiList.appendChild(row);
+        });
+      }
+
+      renderPegawai();
+    });
+  </script>
+</head>
+<body class="hold-transition sidebar-mini">
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="logo.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">Simpeg NF</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Circle Website</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard Pegawai
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daftar Pegawai</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index2.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Kelola Pegawai</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Form Pengajuan Lembur Pegawai</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index-4.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Daftar Pengajuan Lembur Pegawai</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="login.html" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Logout
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h3>Data Pegawai Kelompok 1</h3>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="blank.html">Home</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+        <br>
+        <fieldset class="border p-2">
+            <legend class="w-auto">Data Pegawai Kelompok 1</legend>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Jabatan</th>
+                        <th>Tempat Lahir</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Aktif</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+    
+                <tbody id="pegawai-list">
+                </tbody>
+            </table><br>
+            <button >Create Pegawai</button>
+        
+        </fieldset>
+
+
+       <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+</body>
+</html>
